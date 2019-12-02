@@ -1,0 +1,19 @@
+{
+  "name": "mern-app",
+  "version": "1.0.0",
+  "description": "Social network for developers",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mikemaliniak/mern-app.git"
+  },
+  "author": "Mike Maliniak",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mikemaliniak/mern-app/issues"
+  },
+  "homepage": "https://github.com/mikemaliniak/mern-app#readme"
+}
