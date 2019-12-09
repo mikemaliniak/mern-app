@@ -90,4 +90,8 @@ router.post('/', [ auth, [
 
 });
 
+// @route POST api/profile
+// @desc Create or update a user profile
+// @access Private
+
 module.exports = router;
