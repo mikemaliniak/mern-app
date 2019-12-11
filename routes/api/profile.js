@@ -41,12 +41,13 @@ router.post('/', [ auth, [
     }
 
     const {
-        company, website, location, bio, status, githubusername, skills, youtube,facebook, twitter, instagram, linkedin
+        company, website, location, bio, status, githubusername, skills, youtube, facebook, twitter, instagram, linkedin
     } = req.body;
 
     // Build profile object
 
     const profileFields = {};
+    profileFields.user = req.user.id;
     if(company) profileFields.company = company;
     if(website) profileFields.website = website;
     if(location) profileFields.location = location;
@@ -59,6 +60,7 @@ router.post('/', [ auth, [
     profileFields.social = {};
     if(twitter) profileFields.social.twitter = twitter;
     if(facebook) profileFields.social.facebook = facebook;
+    if(youtube) profileFields.social.youtube = youtube;
     if(linkedin) profileFields.social.linkedin = linkedin;
     if(instagram) profileFields.social.instagram = instagram;
 
@@ -80,7 +82,7 @@ router.post('/', [ auth, [
         profile = new Profile(profileFields);
 
         await profile.save();
-        res.json(profile);
+        return res.json(profile);
 
     } catch(err) {
         console.error(err.message);
@@ -93,5 +95,15 @@ router.post('/', [ auth, [
 // @route POST api/profile
 // @desc Create or update a user profile
 // @access Private
+
+router.get('/', async (req, res) => {
+    try {
+        const profiles = await Profile.find().populate('user', ['name, avatar']);
+        res.json(profiles);
+    } catch(err) {
+        console.log(err);
+        res.status(500).send('Server Error');
+    }
+});
 
 module.exports = router;
