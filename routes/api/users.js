@@ -15,7 +15,7 @@ router.post(
     '/',
     [
         check('name', 'Name is required').not().isEmpty(),
-        check('email', 'Please include vaild email address'),
+        check('email', 'Please include vaild email address').not().isEmpty(),
         check('password', 'Please enter a password with 6 or more characters').isLength({ min: 6 })
     ],
     async (req, res) => {
@@ -73,7 +73,6 @@ router.post(
             );
 
         } catch(err) {
-            console.log(err);
             res.status(500).send('Server Error')
         }
     }
