@@ -13,6 +13,7 @@ const User = require('../../models/User.model');
 // @access Private
 router.get('/me', auth, async (req, res) => {
     try {
+        // The req.user.id gets populated via the auth middleware function
         const profile = await Profile.findOne({ user: req.user.id }).populate('user', ['name', 'avatar']);
 
         if(!profile) {
@@ -22,7 +23,6 @@ router.get('/me', auth, async (req, res) => {
         res.json(profile);
 
     } catch(err) {
-        console.error(err.message);
         res.status(500).send('Server Error');
     }
 });
