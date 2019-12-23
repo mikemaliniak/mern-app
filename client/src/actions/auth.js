@@ -15,20 +15,19 @@ import setAuthToken from '../utils/setAuthToken';
 export const loadUser = () => async dispatch => {
     if(localStorage.token) {
         setAuthToken(localStorage.token);
-    }
-
-    try {
-        const res = await axios.get('/api/auth');
-
-        dispatch({
-            type: USER_LOADED,
-            payload: res.data
-        })
-
-    } catch(err) {
-        dispatch({
-            type: AUTH_ERROR
-        })
+        try {
+            const res = await axios.get('/api/auth');
+    
+            dispatch({
+                type: USER_LOADED,
+                payload: res.data
+            })
+    
+        } catch(err) {
+            dispatch({
+                type: AUTH_ERROR
+            })
+        }
     }
 };
 
@@ -49,7 +48,7 @@ export const register = ({ name, email, password }) => async dispatch => {
             payload: res.data
         });
         // update state with loadUser action
-        dispatch(loadUser());
+        await dispatch(loadUser());
     } catch(err) {
         const errors = err.response.data.errors;
 
@@ -79,7 +78,7 @@ export const login = (email, password) => async dispatch => {
             payload: res.data
         });
         // update state with loadUser action
-        dispatch(loadUser());
+        await dispatch(loadUser());
     } catch(err) {
         const errors = err.response.data.errors;
 

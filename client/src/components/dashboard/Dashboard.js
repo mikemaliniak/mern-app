@@ -11,7 +11,7 @@ const Dashboard = ({ getCurrentProfile, auth, profile}) => {
     }, []);
     return (
         <div>
-            Dassssshboard
+            Dashboard
         </div>
     )
 }
