@@ -3,6 +3,7 @@ import { Route, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getCurrentProfile } from '../../actions/profile';
+import Spinner from '../layout/Spinner';
 
 const Dashboard = ({ getCurrentProfile, auth, profile}) => {
     useEffect(() => {
@@ -12,6 +13,7 @@ const Dashboard = ({ getCurrentProfile, auth, profile}) => {
     return (
         <div>
             Dashboard
+            <Spinner />
         </div>
     )
 }
