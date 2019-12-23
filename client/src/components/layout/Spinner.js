@@ -1,10 +1,10 @@
 import React, { Fragment } from 'react';
-import './loader.css';
+import './Spinner.css';
 
 export default () => {
     return (
         <Fragment>
-            <div className="loader"></div>
+            <div className="Spinner"></div>
         </Fragment>
     )
 }
