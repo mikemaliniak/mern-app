@@ -97,11 +97,11 @@ router.post('/', [ auth, [
 
 // @route GET api/profile
 // @desc Get all profiles
-// @access Private
+// @access Public
 
 router.get('/', async (req, res) => {
     try {
-        const profiles = await Profile.find().populate('user', ['name, avatar']);
+        const profiles = await Profile.find().populate('user', ['name', 'avatar']);
         res.json(profiles);
     } catch(err) {
         console.log(err);
@@ -177,13 +177,12 @@ router.put('/experience', [auth, [
     }
 
     try {
-        const profile = await Profile.findOneAndUpdate({ user: req.user.id });
+        const profile = await Profile.findOne({ user: req.user.id });
 
         // Unshift is same as push but pushed to the front of the array
         profile.experience.unshift(newExp);
 
         await profile.save();
-
         res.json(profile);
     } catch(err) {
         console.error(err.message);
@@ -242,7 +241,7 @@ router.put('/education', [auth, [
     }
 
     try {
-        const profile = await Profile.findOneAndUpdate({ user: req.user.id });
+        const profile = await Profile.findOne({ user: req.user.id });
 
         // Unshift is same as push but pushed to the front of the array
         profile.education.unshift(newEdu);
