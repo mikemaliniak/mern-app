@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect } from 'react';
-import { Route, Redirect, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getCurrentProfile, deleteAccount } from '../../actions/profile';
@@ -12,7 +12,7 @@ const Dashboard = ({ deleteAccount, getCurrentProfile, auth: { user }, profile: 
     useEffect(() => {
         // Invoke action similar to componentDidMount, but using hooks!
         getCurrentProfile();
-    }, []);
+    }, [getCurrentProfile]);
 
     return loading && profile === null ? 
         <Spinner /> : 
