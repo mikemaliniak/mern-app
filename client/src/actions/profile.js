@@ -7,7 +7,9 @@ import {
     PROFILE_ERROR, 
     ACCOUNT_DELETED, 
     CLEAR_PROFILE,
-    GET_REPOS } from './types';
+    GET_REPOS,
+    REPO_NULL
+} from './types';
 
 // Get current users profile
 export const getCurrentProfile = () => async dispatch => {
@@ -75,7 +77,7 @@ export const getGithubRepos = username => async dispatch => {
     } catch(err) {
         if(err.response.status === 404) {
             dispatch({
-                type: GET_REPOS,
+                type: REPO_NULL,
                 payload: []
             });
         } else {
