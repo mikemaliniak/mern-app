@@ -73,10 +73,17 @@ export const getGithubRepos = username => async dispatch => {
         });
 
     } catch(err) {
-        dispatch({
-            type: PROFILE_ERROR,
-            payload: { msg: err.response.statusText, status: err.response }
-        });
+        if(err.response.status === 404) {
+            dispatch({
+                type: GET_REPOS,
+                payload: []
+            });
+        } else {
+            dispatch({
+                type: PROFILE_ERROR,
+                payload: { msg: err.response.statusText, status: err.response }
+            });
+        }
     }
 }
 
