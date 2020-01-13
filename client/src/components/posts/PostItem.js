@@ -27,14 +27,16 @@ const PostItem = ({ auth, post: { _id, text, name, avatar, user, likes, date, co
             </p>
             <button type="button" className="btn btn-light">
                 <i className="fas fa-thumbs-up" />
-                <span>{likes.length}</span>
+                { likes.length > 0 && (
+                    <span>{' '}{likes.length}</span>
+                )}
             </button>
             <button type="button" className="btn btn-light">
                 <i className="fas fa-thumbs-down" />
             </button>
-            <Link to={`/post/${_id}`} classname="btn btn-primary">
-                Discussion { comments.length > 0 && (
-                    <span className="">{comments.length}</span>
+            <Link to={`/post/${_id}`} className="btn btn-primary">
+                Discussion{' '} { comments.length > 0 && (
+                    <span className="comment-count">{comments.length}</span>
                 )}
             </Link>
             {!auth.loading && user === auth.user._id && (
