@@ -14,7 +14,8 @@ import Alert from './components/layout/Alert';
 import PrivateRoute from './components/routing/PrivateRoute';
 import Profiles from './components/profiles/Profiles';
 import Profile from './components/profile/Profile';
-import Post from './components/posts/Posts';
+import Posts from './components/posts/Posts';
+import Post from './components/post/Post';
 // Redux
 import { Provider } from 'react-redux';
 import store from './store';
@@ -54,7 +55,8 @@ const App = () => {
                 <PrivateRoute exact path='/edit-profile' component={ EditProfile } />
                 <PrivateRoute exact path='/add-experience' component={ AddExperience } />
                 <PrivateRoute exact path='/add-education' component={ AddEducation } />
-                <PrivateRoute exact path='/posts' component={ Post } />
+                <PrivateRoute exact path='/posts' component={ Posts } />
+                <PrivateRoute exact path='/posts/:id' component={ Post } />
               </Switch>
             </section>
           </Fragment>
