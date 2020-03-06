@@ -11,12 +11,14 @@ const Post = ({ getPost, post: { post, loading }, match }) => {
     useEffect(() => {
         getPost(match.params.id);
     },  [getPost]);
-    return loading || post === null ? <Spinner /> : <Fragment>
-        <Link to='/posts' className='btn'>
-            Back To Posts
-        </Link>
-        <PostItem post={post} showActions={false} />
-    </Fragment>
+    return loading || post === null ? 
+        <Spinner /> : 
+        <section className="container">
+            <Link to='/posts' className='btn'>
+                Back To Posts
+            </Link>
+            <PostItem post={post} showActions={false} />
+        </section>
 }
 
 Post.propTypes = {

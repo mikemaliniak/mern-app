@@ -18,7 +18,7 @@ const Profile = ({ getProfileById, profile: { profile, loading }, auth, match })
         getProfileById(match.params.id);
     }, [getProfileById, match.params.id]);
     return (
-        <Fragment>
+        <section className="container">
             { profile === null || loading ? 
                 <Spinner /> : 
                 <Fragment>
@@ -66,7 +66,7 @@ const Profile = ({ getProfileById, profile: { profile, loading }, auth, match })
                         <ProfileGithub username={profile.githubusername}/>
                     )}
                 </Fragment>}
-        </Fragment>
+        </section>
     )
 }
 
