@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import './App.css';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Routes } from './components/routing/Routes';
+import Landing from './components/layout/Landing';
 import Navbar from './components/layout/Navbar';
 import Alert from './components/layout/Alert';
 // Redux
@@ -30,7 +31,10 @@ const App = () => {
       <Router>
           <Navbar />
           <Alert />
-          <Routes />
+          <Switch>
+            <Route exact path='/' component={Landing} />
+            <Route component={Routes} />
+          </Switch>
       </Router>
     </Provider>
   )
