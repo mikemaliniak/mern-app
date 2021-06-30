@@ -16,7 +16,7 @@ const Dashboard = ({ deleteAccount, getCurrentProfile, auth: { user }, profile: 
 
     return loading && profile === null ? 
         <Spinner /> : 
-        <Fragment>
+        <section className="container">
             <h1 className="large text-primary">Dashboard</h1>
             <p className="lead">
                 <i className="fas fa-user"></i>&nbsp;
@@ -42,7 +42,7 @@ const Dashboard = ({ deleteAccount, getCurrentProfile, auth: { user }, profile: 
                     Create profile
                 </Link>
             </Fragment>)}
-        </Fragment>;
+        </section>;
 }
 
 Dashboard.propTypes = {
